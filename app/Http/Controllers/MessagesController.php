@@ -26,7 +26,8 @@ class MessagesController extends Controller
      */
     public function create()
     {
-        //
+        Messages::create(['user_id'=>Auth::user()->id,'title'=>$_POST['title'], 'content'=>$_POST['content'], 'data'=>now()]);
+        return redirect('messages');
     }
 
     /**

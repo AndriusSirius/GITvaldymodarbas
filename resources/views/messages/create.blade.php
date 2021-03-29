@@ -1,34 +1,30 @@
-<x-app-layout>
-    <x-slot name="header">
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 bg-white border-b border-gray-200">
+@include('head')
+<section class="container border-2 bg-gray-200 rounded m-5">
+    <h1 class="text-lg text-black font-bold mt-5 mb-5">
+        Rašyti naują žinute.
+    </h1>
+    <form method="POST" action="create_message">
 
-                            <div class="mb-4">
-                                <label class="text-xl text-gray-600">Pavadinimas <span
-                                        class="text-red-500">*</span></label><br>
-                                <input type="text" class="border-2 border-gray-300 p-2 w-full" name="title" id="title"
-                                    value="" required>
-                            </div>
+        @csrf
 
-                            <div class="mb-8">
-                                <label class="text-xl text-gray-600">Tekstas <span
-                                        class="text-red-500">*</span></label><br>
-                                <textarea name="content" class="border-2 border-gray-500">
-
-                                </textarea>
-                            </div>
-
-                            <div class="flex p-1">
-                                <button name="submit" class="p-3 bg-blue-500 text-white hover:bg-blue-400"
-                                    required>išsaugoti</button>
-                            </div>
-
-                    </div>
-                </div>
+        <div>
+            <div class="flex flex-col mb-3">
+                <label for="name">Pavadinimas</label>
+                <input name="title" type="text" id="name"
+                    autocomplete="off">
+            </div>
+            <div class="flex flex-col mb-3">
+                <label for="email">Tekstas</label>
+                <input name="content" type="text" id="name"
+                    autocomplete="off">
             </div>
         </div>
-
-    </x-slot>
-</x-app-layout>
+        <div class="w-full pt-3">
+            <a href="{{ route('create_message') }}"></a>
+            <button type="submit"
+                class="border-2 rounded border-blue-700 px-6 font-bold uppercase">
+                Pridėti
+            </button>
+        </div>
+    </form>
+</section>
