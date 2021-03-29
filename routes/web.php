@@ -12,8 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/create', [\App\Http\Controllers\CreateMessage::class, 'create'])->name('create');
 Route::get('/messages', [\App\Http\Controllers\MessagesController::class, 'index'])->name('messages');
+
+Route::any('/create_message', [\App\Http\Controllers\MessagesController::class, 'create'])->name('create_message');
 
 Route::get('/', function () {
     return view('welcome');
